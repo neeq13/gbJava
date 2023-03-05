@@ -1,13 +1,14 @@
 package les1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task2 {
     private final Scanner scanner = new Scanner(System.in);
 
     public void prefix(){
-        int count = 0;
-        int max = 0;
+        long count;
+        long max = 0;
         String maxPrefix = "";
         System.out.print("Введите искомый префикс: ");
         String prefix = scanner.nextLine().toLowerCase();
@@ -20,22 +21,19 @@ public class Task2 {
             texts[i] = scanner.nextLine();
         }
         for (String text: texts) {
-            for (String str : text.split(" ")) {
-                if (str.equals("")){
-                    continue;
-                }
-                if (prefix.equals("") && str.length() > 2){
-                    prefix = str.substring(0, 2);
-                }
-                if (prefix.equals(str.substring(0, prefix.length()).toLowerCase())) {
-                    count++;
-                    if (max < count) {
-                        max = count;
-                        maxPrefix = text;
-                    }
-                }
+            if (text.equals("")){
+                continue;
             }
-            count = 0;
+            if (prefix.equals("") && text.length() > 2){
+                prefix = text.substring(0, 2);
+            }
+            String finalPrefix = prefix;
+            count = Arrays.stream(text.split(" "))
+                    .filter(s -> finalPrefix.equals(s.substring(0, finalPrefix.length()).toLowerCase())).count();
+            if (max < count) {
+                max = count;
+                maxPrefix = text;
+            }
         }
         if (maxPrefix.equals("")){
             System.out.println("\"\"");

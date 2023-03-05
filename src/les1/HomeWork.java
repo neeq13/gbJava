@@ -25,8 +25,8 @@ public class HomeWork {
     public void primeNumber(){
         StringBuilder builder = new StringBuilder();
         int temp = 0;
-        for(int i = 1; i <= 1000; i++){
-            for (int j = 1; j <= 1000; j++){
+        for(int i = 1; i <= 1000; i+=2){
+            for (int j = 1; j <= 1000; j+=2){
                 if(i % j == 0 && j != i && j != 1){
                     temp = 0;
                     break;
