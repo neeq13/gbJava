@@ -30,23 +30,30 @@ public class Task5 {
                     sum += d;
                     if (sum == b) {
                         result.append("k1");
-                    } else {
+                    } else if (sum < b){
                         result.append("k1, ");
                     }
                 }
                 if (mul != b) {
-                    if (b >= mul * c) {
+                    if (b > mul * c) {
+                        mul *= c;
+                        result2.append("k2, ");
+                    } else if (b == mul * c) {
                         mul *= c;
                         result2.append("k2");
                     } else {
                         mul += d;
-                        result2.append(", ").append("k1");
+                        if(mul < b) {
+                            result2.append("k1, ");
+                        }else if(mul == b){
+                            result2.append("k1");
+                        }
                     }
                 }
                 if (sum == b && mul == b) {
                     break;
                 }
-                if ((mul * c > b || mul + d > b) && sum + d > b) {
+                if ((mul * c > b && mul + d > b) && sum + d > b) {
                     break;
                 }
             }
