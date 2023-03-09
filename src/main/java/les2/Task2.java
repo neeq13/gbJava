@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Task2 extends JFrame {
     private final JButton btnOpenDir;
     private final JFileChooser fileChooser;
-    private final String path = "src/les2/task2/file.txt";
+    private final String path = "ssrc/main/java/les2/task1/file.txt";
     private int count = 0;
     private Logger log;
     {
@@ -115,7 +115,7 @@ public class Task2 extends JFrame {
     }
 
     private void logErrors(String logg) {
-        try (FileWriter fw = new FileWriter("src/les2/task2/log.txt", true)) {
+        try (FileWriter fw = new FileWriter("src/main/java/les2/task1/log.txt", true)) {
             fw.write(logg);
             fw.append("\n");
             fw.flush();

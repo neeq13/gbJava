@@ -83,7 +83,7 @@ public class Task1 extends JFrame {
     }
 
     private void writeInFile(File entry) {
-        try (FileWriter fw = new FileWriter("src/les2/task1/file.txt", true)) {
+        try (FileWriter fw = new FileWriter("src/main/java/les2/task1/file.txt", true)) {
             fw.write(entry.getName());
             fw.append("\n");
             fw.flush();
@@ -94,7 +94,7 @@ public class Task1 extends JFrame {
     }
 
     private void logErrors(String logg) {
-        try (FileWriter fw = new FileWriter("src/les2/task1/log.txt", true)) {
+        try (FileWriter fw = new FileWriter("src/main/java/les2/task1/log.txt", true)) {
             fw.write(logg);
             fw.append("\n");
             fw.flush();
