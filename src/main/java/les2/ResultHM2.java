@@ -10,7 +10,6 @@ public class ResultHM2 {
     private static final HomeWork3 home3 = new HomeWork3();
 
     private static final Task1 task1 = new Task1();
-    private static final Task2 task2 = new Task2();
 
     public static void start(){
         home1.sqlWhere();

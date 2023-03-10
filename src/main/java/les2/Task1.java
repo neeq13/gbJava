@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 public class Task1 extends JFrame {
     private final JButton btnOpenDir;
     private final JFileChooser fileChooser;
+    private final String path1 = "src/main/java/les2/task1/file.txt";
+    private final String path2 = "src/main/java/les2/task2/file.txt";
+    private int count = 0;
     private Logger log;
     {
         try(FileInputStream ins = new FileInputStream("src/main/resources/logger.properties")){
@@ -83,14 +86,37 @@ public class Task1 extends JFrame {
     }
 
     private void writeInFile(File entry) {
-        try (FileWriter fw = new FileWriter("src/main/java/les2/task1/file.txt", true)) {
+        try (FileWriter fw = new FileWriter(path1, true)) {
+            FileWriter fw2 = new FileWriter(path2, true);
+            if(new File(path2).exists() && new File(path2).length() != 0 && count == 0){
+                count = getCount(count);
+            }
             fw.write(entry.getName());
             fw.append("\n");
             fw.flush();
+            count++;
+            fw2.write(count + " Расширение файла: ");
+            fw2.append(entry.getName().substring(entry.getName().indexOf(".") + 1, entry.getName().length() - 1));
+            fw2.append("\n");
+            fw2.flush();
+            fw2.close();
         } catch (IOException e) {
             log.log(Level.WARNING,"что-то пошло не так: \n" + e.getMessage());
             logErrors(e.getMessage());
         }
+    }
+
+    private int getCount(int count) throws IOException {
+        BufferedReader input = new BufferedReader(new FileReader(path2));
+        String last = null;
+        String line;
+        while (null != (line = input.readLine())) {
+            last = line;
+        }
+        if(last != null) {
+            count = Integer.parseInt(last.substring(0, last.indexOf(" ")));
+        }
+        return count;
     }
 
     private void logErrors(String logg) {
