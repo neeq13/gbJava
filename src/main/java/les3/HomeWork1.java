@@ -1,7 +1,5 @@
 package les3;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;

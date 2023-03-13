@@ -11,15 +11,15 @@ public class HomeWork2 {
     public static void array(){
         System.out.print("Введите длину массива: ");
         int arr = scanner.nextInt();
-        int[] array = new int[arr];
-        for (int i = 0; i < array.length; i++){
-            array[i] = new Random().nextInt(0, 10);
+        List<Integer> array = new ArrayList<>();
+        for (int i = 0; i < arr; i++){
+            array.add(new Random().nextInt(0, 10));
         }
-        System.out.println(Arrays.toString(array));
+        System.out.println(array);
         System.out.println(dontEven(array));
     }
 
-    private static List<Integer> dontEven(int[] array){
+    private static List<Integer> dontEven(List<Integer> array){
         List<Integer> list = new ArrayList<>();
         for (int i: array){
             if(i == 0){
