@@ -1,4 +1,5 @@
 import les4.ResultHM4;
+import les5.ResultHM5;
 
 public class Main {
 
@@ -7,5 +8,6 @@ public class Main {
 //        ResultHM2.start();
 //        ResultHM3.start();
         ResultHM4.start();
+        ResultHM5.start();
     }
 }
