@@ -19,22 +19,13 @@ public class HomeWork1 {
         int count = 0;
         StringBuilder sb = new StringBuilder();
         sb.append("select * from students where ");
-        String jStr = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"}";
+        String jStr = "{[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},\n" +
+                " * {\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"},\n" +
+                " * {\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]}";
         JSONObject jsonObj = new JSONObject(jStr);
         Map<String, String> map = new Gson().fromJson(jsonObj.toString(), Map.class);
         for (Map.Entry entry: map.entrySet()){
-            if(!entry.getValue().equals("null")){
-                if(count != 0){
-                    sb.append(" and ");
-                }
-                sb.append(entry.getKey());
-                sb.append("='");
-                sb.append(entry.getValue());
-                sb.append("'");
-                count++;
-            }else {
-                sb.append(";");
-            }
+            System.out.println(entry);
         }
         System.out.println(sb);
     }
